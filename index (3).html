@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Guess the Number</title>
+    <script>
+        // Generate a random number between 1 and 100
+        var secret = Math.floor(Math.random() * 100) + 1;
+        // Keep track of the number of guesses
+        var count = 0;
+        // Check if the user's guess is correct, too high, or too low
+        function checkGuess() {
+            // Get the user's input from the text box
+            var guess = document.getElementById("guess").value;
+            // Convert the input to a number
+            guess = Number(guess);
+            // Increment the count
+            count++;
+            // Get the output element
+            var output = document.getElementById("output");
+            // Compare the guess with the secret number
+            if (guess == secret) {
+                // The user guessed correctly
+                output.innerHTML = "You got it! The number was " + secret + ".<br>You took " + count + " guesses.";
+            } else if (guess > secret) {
+                // The user guessed too high
+                output.innerHTML = "Your guess is too high. Try again.";
+            } else if (guess < secret) {
+                // The user guessed too low
+                output.innerHTML = "Your guess is too low. Try again.";
+            } else {
+                // The user entered an invalid input
+                output.innerHTML = "Please enter a valid number between 1 and 100.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+    <p>I'm thinking of a number between 1 and 100. Can you guess what it is?</p>
+    <input type="text" id="guess" placeholder="Enter your guess here">
+    <button onclick="checkGuess()">Submit</button>
+    <p id="output"></p>
+</body>
+</html>
